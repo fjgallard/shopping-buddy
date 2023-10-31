@@ -1,3 +1,4 @@
 {
-  "sb-user": "http://localhost:4201"
+  "sb-user": "http://localhost:4201",
+  "sb-list": "http://localhost:4203"
 }

@@ -1,0 +1,33 @@
+{
+  "name": "sb-list-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/sb-list-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/sb-list-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "sb-list:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "sb-list:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "sb-list:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/sb-list-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["sb-list"]
+}
