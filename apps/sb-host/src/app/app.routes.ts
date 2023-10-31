@@ -1,4 +1,3 @@
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { Route } from '@angular/router';
 
 import { loadRemoteModule } from '@nx/angular/mf';
@@ -10,12 +9,8 @@ export const appRoutes: Route[] = [
       loadRemoteModule('sb-list', './Module').then((m) => m.RemoteEntryModule),
   },
   {
-    path: 'users',
+    path: '',
     loadChildren: () =>
       loadRemoteModule('sb-user', './Module').then((m) => m.RemoteEntryModule),
-  },
-  {
-    path: '',
-    component: NxWelcomeComponent,
-  },
+  }
 ];
