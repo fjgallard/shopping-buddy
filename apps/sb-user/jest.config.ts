@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'shopping-buddy',
+  displayName: 'sb-user',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/shopping-buddy',
+  coverageDirectory: '../../coverage/apps/sb-user',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
