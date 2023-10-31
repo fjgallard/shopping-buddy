@@ -1,0 +1,33 @@
+{
+  "name": "sb-host-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/sb-host-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/sb-host-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "sb-host:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "sb-host:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "sb-host:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/sb-host-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["sb-host"]
+}
