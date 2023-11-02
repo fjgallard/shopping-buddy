@@ -4,15 +4,10 @@ import { loadRemoteModule } from '@nx/angular/mf';
 
 export const appRoutes: Route[] = [
   {
-    path: 'sb-list',
+    path: 'list',
     loadChildren: () =>
-      loadRemoteModule('sb-list', './Module').then((m) => m.RemoteEntryModule),
+      loadRemoteModule('sb-list', './List').then((m) => m.ListModule),
   },
-  /*{
-    path: '',
-    loadChildren: () =>
-      loadRemoteModule('sb-user', './Module').then((m) => m.RemoteEntryModule),
-  }, */
   {
     path: '',
     loadChildren: () =>
