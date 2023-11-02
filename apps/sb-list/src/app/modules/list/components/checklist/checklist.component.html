@@ -1,1 +1,5 @@
-<p>checklist works!</p>
+<mat-selection-list>
+  <mat-list-option *ngFor="let item of items">
+    {{ item?.name || 'No name' }}
+  </mat-list-option>
+</mat-selection-list>
