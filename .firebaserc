@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "shopping-buddy-f944d": {
+      "hosting": {
+        "sb-user": [
+          "shopping-buddy-f944d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "shopping-buddy-f944d"
+  }
+}
