@@ -7,7 +7,7 @@ import { LoginComponent } from './login.component';
 import { MatButtonModule } from '@angular/material/button';
 import { GoogleSignInDirective } from './google-sign-in.directive';
 
-import { AuthModule } from '@shopping-buddy/auth';
+import { CoreStateModule } from '@shopping-buddy/core-state';
 
 @NgModule({
   declarations: [LoginComponent, GoogleSignInDirective],
@@ -15,7 +15,7 @@ import { AuthModule } from '@shopping-buddy/auth';
     MatButtonModule,
     CommonModule,
     LoginRoutingModule,
-    AuthModule
+    CoreStateModule
   ],
 })
 export class LoginModule {}

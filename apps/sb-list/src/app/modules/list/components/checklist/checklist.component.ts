@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ShoppingItem, ShoppingItemsService } from '@shopping-buddy/core-data';
+import { ShoppingItemsService } from '@shopping-buddy/core-data';
+import { ShoppingItem } from '@shopping-buddy/interfaces';
 import { Observable } from 'rxjs';
 
 @Component({

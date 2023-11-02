@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, collection, collectionData, query, where } from '@angular/fire/firestore';
+import { ShoppingItem } from '@shopping-buddy/interfaces';
 import { Observable } from 'rxjs';
-import { ShoppingItem } from '../../interfaces/shopping-item';
 
 const model = 'shopping-items';
 
