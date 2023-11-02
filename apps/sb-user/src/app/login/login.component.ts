@@ -1,6 +1,8 @@
 import { Component, OnDestroy, inject } from '@angular/core';
-import { Auth, User, signInWithPopup, user, GoogleAuthProvider, signOut } from '@angular/fire/auth';
+import { Auth, user, User } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
+
+import { AuthService, GlobeUser } from '@shopping-buddy/auth'
 
 @Component({
   selector: 'shopping-buddy-login',
@@ -12,16 +14,16 @@ export class LoginComponent implements OnDestroy {
   user$ = user(this.auth);
   userSubscription: Subscription;
 
-  user = {
+  user: GlobeUser = {
     name: 'Jomer',
     email: 'jomer@google.com'
   }
 
   isLoggedIn = false;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.userSubscription = this.user$.subscribe((aUser: User | null) => {
-        //handle user state changes here. Note, that user will be null if there is no currently logged in user.
+      //handle user state changes here. Note, that user will be null if there is no currently logged in user.
      console.log(aUser);
 
      if (aUser) {
@@ -42,18 +44,12 @@ export class LoginComponent implements OnDestroy {
   }
 
   async onLoginClick() {
-    const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(this.auth, provider)
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    if (!credential) {
-      return;
-    }
+    await this.authService.googleSignIn();
+    this.isLoggedIn = true;
   }
 
   async onLogoutClick() {
-    console.log('logout');
-    await signOut(this.auth);
+    await this.authService.signOut();
     this.isLoggedIn = false;
     this.user = {
       name: '',
