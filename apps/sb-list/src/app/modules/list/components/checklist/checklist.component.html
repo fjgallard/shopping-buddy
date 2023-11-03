@@ -3,3 +3,7 @@
     {{ item?.name || 'No name' }}
   </mat-list-option>
 </mat-selection-list>
+
+<div *ngIf="!uid && items.length === 0">
+  No items available
+</div>

@@ -8,6 +8,7 @@ import { CoreDataModule } from '@shopping-buddy/core-data';
 import { CoreStateModule } from '@shopping-buddy/core-state';
 
 import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [ListComponent, ChecklistComponent],
@@ -16,6 +17,8 @@ import { MatListModule } from '@angular/material/list';
     RouterModule.forChild(listRoutes),
     CoreDataModule,
     MatListModule,
-    CoreStateModule],
+    MatProgressSpinnerModule,
+    CoreStateModule
+  ],
 })
 export class ListModule {}
