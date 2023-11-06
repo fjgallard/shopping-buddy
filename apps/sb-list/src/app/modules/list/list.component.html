@@ -1,8 +1,12 @@
-<h1>User's List:</h1>
-<div class="checklist" *ngIf="items$ | async as items; else loading">
-  <shopping-buddy-checklist [items]="items" [uid]="uid"></shopping-buddy-checklist>
-</div>
+<div class="container">
+  <div class="list-container">
+    <h1>User's List:</h1>
+    <div class="checklist" *ngIf="items$ | async as items; else loading">
+      <shopping-buddy-checklist [items]="items" [uid]="uid"></shopping-buddy-checklist>
+    </div>
 
-<ng-template #loading>
-  <mat-spinner></mat-spinner>
-</ng-template>
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+  </div>
+</div>
