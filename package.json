@@ -2,7 +2,11 @@
   "name": "@shopping-buddy/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "init": "nvm use v18.17.0",
+    "start:sb": "npx nx serve --project=\"sb-host\"",
+    "start:user": "nx serve --project=\"sb-user\""
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~16.2.0",

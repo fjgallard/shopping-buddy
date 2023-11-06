@@ -1,9 +1,10 @@
 {
-  "hosting": [
-    {
-      "target": "sb-user",
-      "source": ".",
-      "frameworksBackend": {}
-    }
-  ]
+  "hosting": {
+    "public": "dist/apps/sb-user",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
 }
