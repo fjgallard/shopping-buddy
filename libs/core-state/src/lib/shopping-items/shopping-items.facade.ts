@@ -17,7 +17,7 @@ export class ShoppingItemsFacade {
   loadItems(uid?: string) {
     this.itemsRef?.unsubscribe();
     if (!uid) {
-      return this.$items.next([])
+      return this.clearItems();
     }
 
     this.itemsRef = this.shoppingItemsService.all(uid).subscribe(items => {
