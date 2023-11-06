@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { AuthFacade, ShoppingItemsFacade } from '@shopping-buddy/core-state';
-import { Subscription, tap } from 'rxjs';
+import { GlobeUser, ShoppingItem } from '@shopping-buddy/interfaces';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'shopping-buddy-list',
@@ -9,24 +10,41 @@ import { Subscription, tap } from 'rxjs';
 })
 export class ListComponent implements OnDestroy {
 
-  items$ = this.shoppingItemsFacade.items$;
-  itemsSub: Subscription;
+  isLoading = false;
+  items: ShoppingItem[] = [];
+  user: GlobeUser | null | undefined;
 
-  uid: string | undefined;
+  private userSub: Subscription;
+  private itemsSub: Subscription;
 
   constructor(
     private authFacade: AuthFacade,
     private shoppingItemsFacade: ShoppingItemsFacade
   ) {
-      this.itemsSub = this.authFacade.currentUser$.pipe(
-        tap(user => {
-          this.uid = user?.id;
+      this.userSub = this.authFacade.currentUser$
+        .subscribe(user => {
+          this.user = user;
+          this.isLoading = true;
           this.shoppingItemsFacade.loadItems(this.uid);
-        })
-      ).subscribe();
+        });
+
+      this.itemsSub = this.shoppingItemsFacade.items$
+        .subscribe(items => {
+          this.isLoading = false;
+          this.items = items || [];
+        });
+  }
+
+  get uid() {
+    return this.user?.id;
+  }
+
+  get name() {
+    return this.user?.name;
   }
 
   ngOnDestroy() {
+    this.userSub.unsubscribe();
     this.itemsSub.unsubscribe();
   }
 
